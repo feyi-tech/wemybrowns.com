@@ -28,7 +28,7 @@
                           </p>
                           <div class="pt-5">
                               <label for="name">
-                              <a class="btn text-white bg-green btn-lg">Buy now for $4999</a>
+                              <a class="btn text-white bg-green btn-lg">Buy now for $7999</a>
                               </label>
                           </div>
                           <div class="row d-md-flex text-center justify-content-center text-primary action-icons">
@@ -126,14 +126,14 @@
                 phone: {
                   required: true,
                   minlength:10,
-                  maxlength:10
+                  maxlength:15
                 },
                 price: "required",
                 comments: {
                   maxlength: 500
                 }
-              },
-              messages: {
+            },
+            messages: {
                 name: 'Please enter your name.',
                 email: {
                   required: 'You can not leave this empty.',
@@ -151,7 +151,7 @@
                 comments: {
                   maxlength: 'Message length must be less than 500 character.'
                 }
-              }
+            }
           });
 
           function onSubmit(token) { 

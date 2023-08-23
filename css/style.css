@@ -192,12 +192,27 @@ textarea.form-control {
 label{
   margin: 0;
 }
-.action-icons {
-  position: absolute;
-  bottom: 4rem;
-  width: 100%;
-  left: 0;
+
+.hero h1 span{
+    font-size: 2rem;
 }
+.action-icons {
+    position: relative;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+@media screen and (min-width: 776px) {
+    .hero h1 span{
+        font-size: 3rem;
+    }
+    .action-icons {
+        position: absolute;
+        bottom: 4rem;
+        width: 100%;
+        left: 0;
+    }
+}
+
 .icon-lg {
     font-size: 60px;
     line-height: 18px;

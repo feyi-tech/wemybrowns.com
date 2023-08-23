@@ -2,10 +2,16 @@
 	require_once('recaptchalib.php');
 
 	$env = parse_ini_file('.env');
+	$recaptchaCode = $_POST['g-recaptcha-response'];
+
+	//echo "<p>ENV_TEST: ".$env["ENV_TEST"]."</p><br/>";
+	//echo "<p>recaptcha: ".$recaptchaCode."</p><br/>";
 
 	$recaptcha = new ReCaptcha($env["RECAPTCHA_SECRET_KEY"]); 
-	$recaptcha = $recaptcha->verifyResponse($_SERVER['REMOTE_ADDR'], $_POST['g-recaptcha-response']); 
-	echo "<p>".$env["ENV_TEST"]."</p>";
+	$recaptcha = $recaptcha->verifyResponse($_SERVER['REMOTE_ADDR'], $recaptchaCode); 
+
+	//print_r($recaptcha);
+	
 	if(!$recaptcha->success){ 
 		// Failed
 		echo "recaptcha failed!";
@@ -13,7 +19,7 @@
 	} else if (isset($_POST['email'])) {
 
 		// EDIT THE 2 LINES BELOW AS REQUIRED
-		$email_to = "jinminetics@gmail.com";//"hello@wemybrowns.com";
+		$email_to = "hello@wemybrowns.com";
 		$email_subject = "My offer for wemybrowns.com";
 
 
@@ -41,6 +47,7 @@
 		$headers = 'From: ' . $email_from . "\r\n" .
 						'Reply-To: ' . $email_from . "\r\n" .
 						'X-Mailer: PHP/' . phpversion();
+
 		@mail($email_to, $email_subject, $email_message, $headers);
 
 ?>
